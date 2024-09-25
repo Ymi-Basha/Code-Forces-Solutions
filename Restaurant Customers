@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define ld long double
+void fastIO() {ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);}
+ll freq[200001];
+ll isval[200001];
+void solve() {
+    ll n; cin>>n;
+    while (n--) {
+        ll l, r;
+        cin >> l >> r;
+        freq[l]++;
+        freq[r + 1]--;
+    }
+    for(ll i=1;i<=100000;i++) {
+        freq[i]+=freq[i-1];
+    }
+    cout<<*max_element(freq,freq+100001);
+}
+
+int main() {
+    fastIO();
+    ll TestCases=1;
+    //cin>>TestCases;
+    while (TestCases--) {
+        solve();
+    }
+}
